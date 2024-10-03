@@ -5,6 +5,11 @@ final class AppRouteName {
   static const String splash = "/splashPage";
   static const String welcomePage = "/welcome";
 
+  static const String signInSocial = "/sign-in-social";
+  static const String signUpSocial = "/sign-un-social";
+  static const String signInEmail = "/sign-in-email";
+  static const String signUpEmail = "/sign-up-email";
+
 
 
 

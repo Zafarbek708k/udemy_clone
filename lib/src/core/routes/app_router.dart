@@ -1,9 +1,14 @@
 import "package:udemy_clone/src/core/constants/context_extension.dart";
 import "package:udemy_clone/src/core/widgets/text_widget.dart";
 import "package:udemy_clone/src/feature/entry/view/on_boarding_page.dart";
+import "package:udemy_clone/src/feature/entry/view/sign_in_email.dart";
+import "package:udemy_clone/src/feature/entry/view/sign_in_social.dart";
+import "package:udemy_clone/src/feature/entry/view/sign_up_email.dart";
+import "package:udemy_clone/src/feature/entry/view/sign_up_social.dart";
 import "package:udemy_clone/src/feature/entry/view/splash_page.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:udemy_clone/src/feature/featured/view/featured.dart";
 import "../../feature/home_navigation.dart";
 import "app_route_name.dart";
 
@@ -43,6 +48,31 @@ final class AppRouter {
         builder: (context, state) => const OnBoardingPage(),
       ),
 
+      /// sign in with social account
+      GoRoute(
+        path: AppRouteName.signInSocial,
+        builder: (context, state) => const SignInSocial(),
+      ),
+      /// sign up with social account
+      GoRoute(
+        path: AppRouteName.signUpSocial,
+        builder: (context, state) => const SignUpSocial(),
+      ),
+
+      /// sign in with email
+      GoRoute(
+        path: AppRouteName.signInEmail,
+        builder: (context, state) => const SignInEmail(),
+      ),
+
+      /// sign up with email
+      GoRoute(
+        path: AppRouteName.signUpSocial,
+        builder: (context, state) => const SignUpEmail(),
+      ),
+
+
+
 
       /// Patient Shell Route
       StatefulShellRoute.indexedStack(
@@ -55,7 +85,8 @@ final class AppRouter {
               GoRoute(
                 path: AppRouteName.featured,
                 pageBuilder: (context, state) =>
-                    NoTransitionPage(child: Scaffold(body: Center(child: CustomTextWidget("Featured", textColor: context.appTheme.secondary)))),
+                    const NoTransitionPage(child: Featured()),
+                    // NoTransitionPage(child: Scaffold(body: Center(child: CustomTextWidget("Featured", textColor: context.appTheme.secondary)))),
                 routes: const [],
               ),
             ],
@@ -78,26 +109,30 @@ final class AppRouter {
                 path: AppRouteName.myLearning,
                 pageBuilder: (context, state) =>
                     NoTransitionPage(child: Scaffold(body: Center(child: CustomTextWidget("My learning", textColor: context.appTheme.secondary)))),
-                routes: const [],
+                routes: const [
+
+                ],
               ),
             ],
           ),
+
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: AppRouteName.wishlist,
                 pageBuilder: (context, state) =>
-                    NoTransitionPage(child: Scaffold(body: Center(child: CustomTextWidget("Featured", textColor: context.appTheme.secondary)))),
+                    NoTransitionPage(child: Scaffold(body: Center(child: CustomTextWidget("WishList", textColor: context.appTheme.secondary)))),
                 routes: const [],
               ),
             ],
           ),
+
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: AppRouteName.account,
                 pageBuilder: (context, state) =>
-                    NoTransitionPage(child: Scaffold(body: Center(child: CustomTextWidget("Featured", textColor: context.appTheme.secondary)))),
+                    NoTransitionPage(child: Scaffold(body: Center(child: CustomTextWidget("Account", textColor: context.appTheme.secondary)))),
                 routes: const [],
               ),
             ],

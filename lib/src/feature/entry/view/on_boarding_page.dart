@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "package:go_router/go_router.dart";
 import "package:udemy_clone/src/core/constants/context_extension.dart";
 import "package:smooth_page_indicator/smooth_page_indicator.dart";
+import "package:udemy_clone/src/core/routes/app_route_name.dart";
 import "../../../../riverpod.dart";
 import "../../../core/widgets/text_widget.dart";
 
@@ -70,7 +72,9 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage> {
                   ),
                 ),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go(AppRouteName.signInSocial);
+                  },
                   height: double.infinity,
                   minWidth: MediaQuery.of(context).size.width / 2 - 10,
                   child: CustomTextWidget(
@@ -119,61 +123,3 @@ class Page extends StatelessWidget {
     );
   }
 }
-
-// Widget a() {
-//   return Column(
-//     children: [
-//       // Expanded(
-//       //   flex: 7,
-//       //   child: PageView(
-//       //     controller: controller.pageController,
-//       //     onPageChanged: (index) {
-//       //       controller.onPageChanged(index);
-//       //     },
-//       //     children: [
-//       //       // OnBoardingContent(
-//       //       //   title: context.localized.welcome1title,
-//       //       //   description: context.localized.welcome1description,
-//       //       //   imageName: controller.images[controller.currentPage],
-//       //       // ),
-//       //       // OnBoardingContent(
-//       //       //   title: context.localized.welcome2title,
-//       //       //   description: context.localized.welcome2description,
-//       //       //   imageName: controller.images[controller.currentPage],
-//       //       // ),
-//       //       // OnBoardingContent(
-//       //       //   title: context.localized.welcome3title,
-//       //       //   description: context.localized.welcome3description,
-//       //       //   imageName: controller.images[controller.currentPage],
-//       //       // ),
-//       //     ],
-//       //   ),
-//       // ),
-//       // Expanded(
-//       //   flex: 1,
-//       //   child: Row(
-//       //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-//       //     children: [
-//       //
-//       //       const SizedBox(width: 50),
-//       //       ElevatedButton(
-//       //         onPressed: controller.currentPage == 2
-//       //             ? () {
-//       //           context.go(AppRouteName.featured);
-//       //           controller.saveUser();
-//       //         }
-//       //             : () {
-//       //           log("A");
-//       //           controller.pageController.nextPage(
-//       //             duration: const Duration(milliseconds: 300),
-//       //             curve: Curves.easeIn,
-//       //           );
-//       //         },
-//       //         child: CustomTextWidget(controller.currentPage > 1 ? "Get Started" : "Next", textColor: context.appTheme.secondary),
-//       //       ),
-//       //     ],
-//       //   ),
-//       // ),
-//     ],
-//   );
-// }

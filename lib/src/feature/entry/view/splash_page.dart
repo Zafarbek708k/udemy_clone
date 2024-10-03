@@ -1,11 +1,9 @@
 import "dart:async";
 import "dart:developer";
-import "package:udemy_clone/src/core/widgets/text_widget.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 import "package:udemy_clone/src/core/constants/context_extension.dart";
 import "package:udemy_clone/src/core/storage/app_storage.dart";
-import "package:lottie/lottie.dart";
 import "../../../core/routes/app_route_name.dart";
 
 class SplashPage extends StatefulWidget {

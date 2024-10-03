@@ -1,5 +1,7 @@
 
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:udemy_clone/src/core/constants/context_extension.dart';
 import 'package:udemy_clone/src/core/widgets/text_widget.dart';
@@ -23,24 +25,22 @@ class _FeaturedState extends State<Featured> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomTextWidget("Featured", textColor: context.appTheme.secondary),
+        title: CustomTextWidget("Featured", textColor: context.appTheme.secondary, fontSize: 24,),
         backgroundColor: Colors.black,
         actions: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              alignment: Alignment.center,
-              child: InkWell(
-                child: const Icon(Icons.shopping_basket_outlined),
-                onTap: () {},
-              ),
+            padding: const EdgeInsets.only(right: 25),
+            child: Badge.count(
+              count: 5,
+              child: IconButton(
+                  onPressed: (){},
+                  icon: Icon(Icons.shopping_cart, color: context.appTheme.secondary)),
             ),
-          ),
+          )
         ],
       ),
-      backgroundColor: Colors.black,
       body: RefreshIndicator(
-        onRefresh: () => _pullData(),
+        onRefresh: ()async{},
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,6 +55,7 @@ class _FeaturedState extends State<Featured> {
                     borderRadius: BorderRadius.circular(10.0),
                     image: const DecorationImage(
                       fit: BoxFit.fill,
+                      colorFilter: ColorFilter.mode(Colors.white, BlendMode.color),
                       image: AssetImage('assets/images/udemy-logo.png'),
                     ),
                   ),
@@ -114,212 +115,8 @@ class _FeaturedState extends State<Featured> {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 300,
-              //   width: 400,
-              //   child: GetBuilder<DataController>(
-              //     init: DataController(),
-              //     builder: (value) {
-              //       return FutureBuilder(
-              //         future: value.getData('top'),
-              //         builder: (context, AsyncSnapshot<dynamic> snapshot) {
-              //           if (snapshot.connectionState ==
-              //               ConnectionState.waiting) {
-              //             return Center(
-              //               child: CircularProgressIndicator(
-              //                 backgroundColor: Colors.black,
-              //               ),
-              //             );
-              //           } else {
-              //             return ListView.builder(
-              //               scrollDirection: Axis.horizontal,
-              //               itemCount: snapshot.data.length,
-              //               itemBuilder: (BuildContext context, int index) {
-              //                 return GestureDetector(
-              //                   onTap: () {
-              //                     Get.to(
-              //                           () => DetailsScreen(),
-              //                       transition: Transition.rightToLeftWithFade,
-              //                       arguments: snapshot.data[index],
-              //                     );
-              //                   },
-              //                   child: Container(
-              //                     child: Column(
-              //                       crossAxisAlignment:
-              //                       CrossAxisAlignment.start,
-              //                       children: [
-              //                         Padding(
-              //                           padding: const EdgeInsets.all(8.0),
-              //                           child: ClipRRect(
-              //                             borderRadius:
-              //                             BorderRadius.circular(10.0),
-              //                             child: FadeInImage(
-              //                               height: 120.0,
-              //                               width: 200.0,
-              //                               placeholder: AssetImage(
-              //                                   "assets/images/udemy_logo_2.jpg"),
-              //                               fit: BoxFit.cover,
-              //                               image: NetworkImage(
-              //                                 snapshot.data[index]
-              //                                     .data()['image'],
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding:
-              //                           const EdgeInsets.only(left: 10.0),
-              //                           child: SizedBox(
-              //                             width: 200.0,
-              //                             child: Text(
-              //                               snapshot.data[index]
-              //                                   .data()['title'],
-              //                               overflow: TextOverflow.ellipsis,
-              //                               style: TextStyle(
-              //                                 color: Colors.grey.shade300,
-              //                                 fontSize: 18.0,
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 5.0),
-              //                           child: Text(
-              //                             snapshot.data[index].data()['author'],
-              //                             style: TextStyle(
-              //                               color: Colors.grey.shade500,
-              //                               fontSize: 14.0,
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 5.0),
-              //                           child: Row(
-              //                             children: [
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Text(
-              //                                 snapshot.data[index]
-              //                                     .data()['ratings'],
-              //                                 style: TextStyle(
-              //                                   color: Colors.grey.shade500,
-              //                                   fontSize: 14.0,
-              //                                 ),
-              //                               ),
-              //                               Text(
-              //                                 " (" +
-              //                                     snapshot.data[index]
-              //                                         .data()['enrolled'] +
-              //                                     ")",
-              //                                 style: TextStyle(
-              //                                   color: Colors.grey.shade500,
-              //                                   fontSize: 14.0,
-              //                                 ),
-              //                               ),
-              //                             ],
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 5.0),
-              //                           child: Row(
-              //                             children: [
-              //                               Text(
-              //                                 snapshot.data[index]
-              //                                     .data()['discount'] !=
-              //                                     ""
-              //                                     ? snapshot.data[index]
-              //                                     .data()['discount']
-              //                                     : snapshot.data[index]
-              //                                     .data()['price'],
-              //                                 style: TextStyle(
-              //                                   color: Colors.white,
-              //                                   fontSize: 18.0,
-              //                                 ),
-              //                               ),
-              //                               SizedBox(
-              //                                 width: 7.0,
-              //                               ),
-              //                               Text(
-              //                                 snapshot.data[index]
-              //                                     .data()['discount'] !=
-              //                                     ""
-              //                                     ? snapshot.data[index]
-              //                                     .data()['price']
-              //                                     : "",
-              //                                 style: TextStyle(
-              //                                   color: Colors.grey,
-              //                                   fontSize: 15.0,
-              //                                   decoration:
-              //                                   TextDecoration.lineThrough,
-              //                                 ),
-              //                               ),
-              //                             ],
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 10.0),
-              //                           child: SizedBox(
-              //                             height: 30.0,
-              //                             width: 80.0,
-              //                             child: Container(
-              //                               child: Center(
-              //                                 child: Text(
-              //                                   "Best Seller",
-              //                                   style: TextStyle(
-              //                                     color: HexColor('#3d0000'),
-              //                                     fontWeight: FontWeight.bold,
-              //                                   ),
-              //                                 ),
-              //                               ),
-              //                               decoration: BoxDecoration(
-              //                                 color: Colors.yellow[300],
-              //                                 borderRadius:
-              //                                 BorderRadius.circular(4.0),
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                       ],
-              //                     ),
-              //                   ),
-              //                 );
-              //               },
-              //             );
-              //           }
-              //         },
-              //       );
-              //     },
-              //   ),
-              // ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+              const Padding(
+                padding: EdgeInsets.all(10.0),
                 child: Text(
                   "Courses in Web Development",
                   style: TextStyle(
@@ -328,210 +125,6 @@ class _FeaturedState extends State<Featured> {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 300,
-              //   width: 400,
-              //   child: GetBuilder<DataController>(
-              //     init: DataController(),
-              //     builder: (value) {
-              //       return FutureBuilder(
-              //         future: value.getData('top'),
-              //         builder: (context, AsyncSnapshot<dynamic> snapshot) {
-              //           if (snapshot.connectionState ==
-              //               ConnectionState.waiting) {
-              //             return Center(
-              //               child: CircularProgressIndicator(
-              //                 backgroundColor: Colors.black,
-              //               ),
-              //             );
-              //           } else {
-              //             return ListView.builder(
-              //               scrollDirection: Axis.horizontal,
-              //               itemCount: snapshot.data.length,
-              //               itemBuilder: (BuildContext context, int index) {
-              //                 return GestureDetector(
-              //                   onTap: () {
-              //                     Get.to(
-              //                       DetailsScreen(),
-              //                       transition: Transition.rightToLeftWithFade,
-              //                       arguments: snapshot.data[index],
-              //                     );
-              //                   },
-              //                   child: Container(
-              //                     child: Column(
-              //                       crossAxisAlignment:
-              //                       CrossAxisAlignment.start,
-              //                       children: [
-              //                         Padding(
-              //                           padding: const EdgeInsets.all(8.0),
-              //                           child: ClipRRect(
-              //                             borderRadius:
-              //                             BorderRadius.circular(10.0),
-              //                             child: FadeInImage(
-              //                               height: 120.0,
-              //                               width: 200.0,
-              //                               fit: BoxFit.fill,
-              //                               placeholder: AssetImage(
-              //                                   "assets/images/udemy_logo_2.jpg"),
-              //                               image: NetworkImage(
-              //                                 snapshot.data[index]
-              //                                     .data()['image'],
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding:
-              //                           const EdgeInsets.only(left: 10.0),
-              //                           child: SizedBox(
-              //                             width: 200.0,
-              //                             child: Text(
-              //                               snapshot.data[index]
-              //                                   .data()['title'],
-              //                               overflow: TextOverflow.ellipsis,
-              //                               style: TextStyle(
-              //                                 color: Colors.grey.shade300,
-              //                                 fontSize: 18.0,
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 5.0),
-              //                           child: Text(
-              //                             snapshot.data[index].data()['author'],
-              //                             style: TextStyle(
-              //                               color: Colors.grey.shade500,
-              //                               fontSize: 14.0,
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 5.0),
-              //                           child: Row(
-              //                             children: [
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Icon(
-              //                                 Icons.star,
-              //                                 color: Colors.yellow,
-              //                                 size: 18.0,
-              //                               ),
-              //                               Text(
-              //                                 snapshot.data[index]
-              //                                     .data()['ratings'],
-              //                                 style: TextStyle(
-              //                                   color: Colors.grey.shade500,
-              //                                   fontSize: 14.0,
-              //                                 ),
-              //                               ),
-              //                               Text(
-              //                                 " (" +
-              //                                     snapshot.data[index]
-              //                                         .data()['enrolled'] +
-              //                                     ")",
-              //                                 style: TextStyle(
-              //                                   color: Colors.grey.shade500,
-              //                                   fontSize: 14.0,
-              //                                 ),
-              //                               ),
-              //                             ],
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 5.0),
-              //                           child: Row(
-              //                             children: [
-              //                               Text(
-              //                                 snapshot.data[index]
-              //                                     .data()['discount'] !=
-              //                                     ""
-              //                                     ? snapshot.data[index]
-              //                                     .data()['discount']
-              //                                     : snapshot.data[index]
-              //                                     .data()['price'],
-              //                                 style: TextStyle(
-              //                                   color: Colors.white,
-              //                                   fontSize: 18.0,
-              //                                 ),
-              //                               ),
-              //                               SizedBox(
-              //                                 width: 7.0,
-              //                               ),
-              //                               Text(
-              //                                 snapshot.data[index]
-              //                                     .data()['discount'] !=
-              //                                     ""
-              //                                     ? snapshot.data[index]
-              //                                     .data()['price']
-              //                                     : "",
-              //                                 style: TextStyle(
-              //                                   color: Colors.grey,
-              //                                   fontSize: 15.0,
-              //                                   decoration:
-              //                                   TextDecoration.lineThrough,
-              //                                 ),
-              //                               ),
-              //                             ],
-              //                           ),
-              //                         ),
-              //                         Padding(
-              //                           padding: const EdgeInsets.only(
-              //                               left: 10.0, top: 10.0),
-              //                           child: SizedBox(
-              //                             height: 30.0,
-              //                             width: 80.0,
-              //                             child: Container(
-              //                               child: Center(
-              //                                 child: Text(
-              //                                   "Best Seller",
-              //                                   style: TextStyle(
-              //                                     color: HexColor('#3d0000'),
-              //                                     fontWeight: FontWeight.bold,
-              //                                   ),
-              //                                 ),
-              //                               ),
-              //                               decoration: BoxDecoration(
-              //                                 color: Colors.yellow[300],
-              //                                 borderRadius:
-              //                                 BorderRadius.circular(4.0),
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                       ],
-              //                     ),
-              //                   ),
-              //                 );
-              //               },
-              //             );
-              //           }
-              //         },
-              //       );
-              //     },
-              //   ),
-              // ),
             ],
           ),
         ),
