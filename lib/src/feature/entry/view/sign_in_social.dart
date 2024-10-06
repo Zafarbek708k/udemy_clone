@@ -95,7 +95,9 @@ class _SignInSocialState extends State<SignInSocial> {
                     fontWeight: FontWeight.w400,
                   ),
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.push(AppRouteName.signUpSocial);
+                    },
                     shape: const StadiumBorder(),
                     child: const CustomTextWidget(
                       "Create an Account",

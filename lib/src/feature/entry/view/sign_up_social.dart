@@ -73,6 +73,14 @@ class _SignUpSocialState extends State<SignUpSocial> {
                   size: 40,
                 ),
               ),
+              const SizedBox(height: 20),
+
+              Row(
+                children: [
+                  
+                ],
+              ),
+
               const Spacer(
                 flex: 2,
               ),
@@ -80,16 +88,17 @@ class _SignUpSocialState extends State<SignUpSocial> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const CustomTextWidget(
-                    "New here?",
+                    "Have an account?",
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                   MaterialButton(
-                    onPressed: () {},
-                    color: Colors.grey,
+                    onPressed: () {
+                      context.push(AppRouteName.signInSocial);
+                    },
                     shape: const StadiumBorder(),
                     child: const CustomTextWidget(
-                      "Create an Account",
+                      "Sign In",
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
