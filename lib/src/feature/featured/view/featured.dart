@@ -15,7 +15,7 @@ class FeaturedState extends State<Featured> {
     return Scaffold(
       appBar: AppBar(
         title: CustomTextWidget("Featured", textColor: context.appTheme.secondary, fontSize: 24,),
-        backgroundColor: Colors.black,
+        backgroundColor: context.appTheme.primary,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 25),
