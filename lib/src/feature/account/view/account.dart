@@ -12,6 +12,9 @@ class _AccountState extends State<Account> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Account"),),
+      body: Column(
+
+      ),
     );
   }
 }
