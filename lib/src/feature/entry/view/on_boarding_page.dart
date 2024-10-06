@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:go_router/go_router.dart";
 import "package:udemy_clone/src/core/constants/context_extension.dart";
@@ -25,10 +26,9 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(height: 25),
-
+          SizedBox(height: 50.h),
           SizedBox(
-            height: 450,
+            height: 480.h,
             child: PageView.builder(
               controller: controller.pageController,
               itemCount: controller.images.length,
@@ -37,8 +37,7 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage> {
               },
             ),
           ),
-          const SizedBox(height: 25),
-
+          SizedBox(height: 10.h),
           Center(
             child: SmoothPageIndicator(
               controller: controller.pageController, // Use the same controller here
@@ -52,8 +51,7 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage> {
               ),
             ),
           ),
-
-
+          const SizedBox(height: 15),
           Container(
             height: 75,
             width: double.infinity,
@@ -106,8 +104,10 @@ class Page extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-              height: 320,
-              child: SvgPicture.asset(image)),
+            height: 320,
+            child: SvgPicture.asset(image),
+          ),
+          const SizedBox(height: 50),
           SizedBox(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,7 +1,3 @@
-
-
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:udemy_clone/src/core/constants/context_extension.dart';
 import 'package:udemy_clone/src/core/widgets/text_widget.dart';
@@ -10,17 +6,10 @@ class Featured extends StatefulWidget {
   const Featured({super.key});
 
   @override
-  _FeaturedState createState() => _FeaturedState();
+  FeaturedState createState() => FeaturedState();
 }
 
-class _FeaturedState extends State<Featured> {
-
-  Future<Null> _pullData() {
-    return Future<Null>.value();
-  }
-
-
-
+class FeaturedState extends State<Featured> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

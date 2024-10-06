@@ -57,7 +57,9 @@ class _SignUpSocialState extends State<SignUpSocial> {
               ),
               MainAuthButton(
                 title: "Sign in with Google",
-                onPressed: () {},
+                onPressed: () {
+                  context.go(AppRouteName.featured);
+                },
                 icon: Icon(
                   Icons.g_mobiledata_outlined,
                   color: context.appTheme.secondary,

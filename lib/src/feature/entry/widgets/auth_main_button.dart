@@ -43,6 +43,7 @@ class MainAuthButton extends StatelessWidget {
               const Spacer(flex: 1),
               CustomTextWidget(
                 title,
+                textColor: context.appTheme.secondary,
                 fontSize: fontSize,
                 fontWeight: FontWeight.bold,
               ),
